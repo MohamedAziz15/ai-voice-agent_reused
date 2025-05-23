@@ -1,0 +1,24 @@
+from dotenv import load_dotenv
+from livekit.plugins import silero
+from livekit.agents import AgentSession
+from livekit.plugins.turn_detector.multilingual import MultilingualModel
+
+import os
+
+from modules.egtts import Egtts
+from modules.stt import WhisperSTT
+from modules.llm import OpenRouterLLM
+
+
+load_dotenv()
+
+api_key = os.getenv("API_KEY")
+base_url = os.getenv("BASE_URL")
+
+session = AgentSession(
+    stt=WhisperSTT(),
+    llm=OpenRouterLLM(api_key, base_url),
+    tts=Egtts(),
+    vad=silero.VAD.load(),
+    turn_detection=MultilingualModel()
+)

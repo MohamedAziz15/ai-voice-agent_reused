@@ -1,0 +1,10 @@
+git+https://github.com/openai/whisper.git 
+TTS==0.22.0 
+deepspeed==0.16.8 
+livekit-agents 
+livekit-plugins-turn-detector 
+livekit-plugins-noise-cancellation 
+livekit-plugins-silero
+huggingface_hub
+dot
+python-dotenv
