@@ -43,12 +43,14 @@ class OpenAILLM(LLM):
 
 from livekit.agents.llm import LLM
 
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
 class OpenRouterLLM(LLM):
     def __init__(self):
         super().__init__()
         self.client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
-            api_key="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"
+            api_key=openai_api_key
         )
         self.history = [
             {"role": "system", "content": "You are a helpful voice assistant."}
