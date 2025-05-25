@@ -1,21 +1,29 @@
 [project]
-name = "ai_voice_agent"
+name = "my-voice-ai-project"
 version = "0.1.0"
-description = "A project using Whisper, TTS, LiveKit plugins, and DeepSpeed"
+description = "A project combining voice processing and AI plugins."
 authors = [
-  { name="Your Name", email="you@example.com" }
+    { name = "Your Name", email = "your.email@example.com" }
 ]
+readme = "README.md"
+requires-python = ">=3.8"
+
 dependencies = [
-  "TTS==0.22.0",
-  "deepspeed==0.16.8",
-  "livekit-agents",
-  "livekit-plugins-turn-detector",
-  "livekit-plugins-noise-cancellation",
-  "livekit-plugins-silero",
-  "huggingface_hub",
-  "dot",
-  "python-dotenv",
-  "whisper @ git+https://github.com/openai/whisper.git"
+    "faster-whisper",
+    "coqui-tts",
+    "deepspeed==0.16.8",
+    "livekit-agents",
+    "livekit-plugins-turn-detector",
+    "livekit-plugins-noise-cancellation",
+    "livekit-plugins-silero",
+    "google-generativeai",
+    "python-dotenv",
+    "huggingface-hub",
+    "livekit-plugins-openai",
+    "livekit-plugins-elevenlabs",
+    "transformers==4.51.3"
 ]
 
-requires-python = ">=3.10"
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
