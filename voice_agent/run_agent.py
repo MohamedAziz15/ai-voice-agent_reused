@@ -79,6 +79,8 @@ from livekit.agents import (
 from livekit.plugins import (
     noise_cancellation,
     silero,
+    cartesia,
+    groq,
 )
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
@@ -122,8 +124,11 @@ async def entrypoint(ctx: agents.JobContext):
     turn_detector = MultilingualModel()
 
     session = AgentSession(
-        stt=openai.STT(model="gpt-4o-mini-transcribe", language="ar"),
-        llm=openai.LLM(model="gpt-4o-mini"),
+        # stt=openai.STT(model="gpt-4o-mini-transcribe", language="ar"),
+        stt = cartesia.STT(model="ink-whisper"),# model = "ink-whisper-2025-06-04",
+        # llm=openai.LLM(model="gpt-4o-mini"),
+        llm=groq.LLM(model="llama3-8b-8192"),
+
         tts=tts_model,
         vad=vad_model,
         turn_detection=turn_detector,
